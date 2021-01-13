@@ -17,7 +17,7 @@ vector<string> CSV::csvParser(string & str, char delim){
 	i_f = str.size() - 1;
 	flag = false;
       }
-      P.insert(0, str, i_i, i_f + 1); // Insert in P str from i_i to i_f positions
+      P.insert(0, str, i_i, (i_f + 1) - i_i); // Insert in P str from i_i to i_f positions
       result.push_back(P);
       i_i = i_f + 2;
     }
@@ -27,7 +27,7 @@ vector<string> CSV::csvParser(string & str, char delim){
 	i_f = str.size();
 	flag = false;
       }
-      P.insert(0, str, i_i, i_f); // Insert in P str from i_i to i_f - 1 positions
+      P.insert(0, str, i_i, i_f - i_i); // Insert in P str from i_i to i_f - 1 positions
       result.push_back(P);
       i_i = i_f + 1;
       P = "";
@@ -120,7 +120,7 @@ void CSV::printData(){
 }
 
 void CSV::printData(int i){
-  for (int j; j < data[i].size(); j++){
+  for (int j = 0; j < data[i].size(); j++){
     cout << data[i][j] << ",";
   }
   cout << endl;
