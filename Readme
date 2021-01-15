@@ -1,0 +1,49 @@
+### CSV Parser ###
+
+This Abstract Data Type (ADT) project is a CSV parser.
+csv.hpp is the header.
+csv.cpp is the implementation
+main.cpp is a imcomplete demo for testing methods.
+
+## Instructions to compile: ##
+
+You must include csv.hpp and csv.cpp in your project (#include "csv.hpp", if you put the csv.hpp and csv.cpp in the same directory of the project).
+Then you must compile your project as usual.
+In the makefile of this project, you can see a example.
+
+## An example of CSV file ##
+
+Suppose a CSV file like this:
+
+field1,field2,field3,field4
+"afs,df",45,4.53,"example"
+"feff",458,5.77,"example2"
+...
+etc
+
+## How to use ##
+
+You must declare a CSV variable inserting the csv filename as a c-string or a C++ string as parameter.
+You can also insert the delimiter (',' is the default) and declares if the head (1st line containning  the fieldnames) exists.
+
+# Example: #
+
+CSV foo("bar.csv"); // Extracts the bar.csv file, using delimiter = ',' and gets the head.
+CSV SNA("FU.csv", ';', false); // Extracts the FU.csv file using delimiter = ';' and there is no head to be extracted.
+
+## Using the CSV data extracted ##
+
+[] operator is overloaded, so in the above examples you could access the line 0 of foo by foo[0], and the 3rd field of a line as foo[0][2].
+
+Data extracted is vector<vector<string>>.
+While we're still making improvments, it is programmer job to convert data in the fields to the correct data type (i.e. integer or double as example).
+
+Head could be get by CSV::HEAD method:
+
+Example:
+
+vector<string> A; // don't forget to include vector by #include<vector>
+A = foo.HEAD();
+
+You can get the whole data content the same way:
+vector<vector<string>> B = foo.DATA();
